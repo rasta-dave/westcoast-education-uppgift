@@ -1,4 +1,5 @@
 1. Skapa ett Github repo för uppgiften
+2. Installera vitest: npm install -D vitest
 
 ===============================================
 

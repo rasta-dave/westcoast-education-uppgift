@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script
+      src="https://kit.fontawesome.com/55174c58a9.js"
+      crossorigin="anonymous"></script>
+    <title>Westcoast Education - Kurser</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container">
+          <ul class="menu">
+            <li class="logo">
+              <a class="page-title" href="../index.html">
+                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                Westcoast Education
+              </a>
+            </li>
+            <li class="toggle">
+              <input class="menu-btn" type="checkbox" id="menu-btn" />
+              <label class="menu-icon" for="menu-btn">
+                <span class="nav-icon"></span>
+              </label>
+            </li>
+            <li class="menu-item">
+              <a href="../index.html">Hem</a>
+            </li>
+            <li class="menu-item">
+              <a href="/src/pages/kurser.html">Kurser</a>
+            </li>
+            <li class="menu-item">
+              <a href="/src/pages/about.html">Om oss</a>
+            </li>
+            <li class="menu-item">
+              <a href="/src/pages/kontakt.html">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="course-listing">
+        <div class="container">
+          <h1>Våra Kurser</h1>
+
+          <div class="course-filters">
+            <button class="btn filter-btn active" data-filter="all">
+              Alla
+            </button>
+            <button class="btn filter-btn" data-filter="classroom">
+              Klassrum
+            </button>
+            <button class="btn filter-btn" data-filter="distance">
+              Distans
+            </button>
+          </div>
+
+          <div class="search-bar">
+            <input
+              type="text"
+              id="course-search"
+              placeholder="Sök efter kurs..." />
+          </div>
+
+          <div class="course-grid" id="course-list">
+            <!-- Kurskort kommer att läggas till dynamiskt via JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Westcoast Education.</p>
+      </div>
+    </footer>
+  </body>
+</html>

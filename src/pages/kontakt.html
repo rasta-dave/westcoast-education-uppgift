@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script src="https://kit.fontawesome.com/55174c58a9.js" crossorigin="anonymous"></script>
+    <title>Westcoast Education - Kontakt</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <ul class="menu">
+                    <li class="logo">
+                        <a class="page-title" href="../index.html">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            Westcoast Education
+                        </a>
+                    </li>
+                    <!-- Hamburger menu -->
+                    <li class="toggle">
+                        <input class="menu-btn" type="checkbox" id="menu-btn" />
+                        <label class="menu-icon" for="menu-btn">
+                            <span class="nav-icon"></span>
+                        </label>
+                    </li>
+                    <!-- Menu items -->
+                    <li class="menu-item">
+                        <a href="../index.html">Hem</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/src/pages/kurser.html">Kurser</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/src/pages/about.html">Om oss</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/src/pages/kontakt.html">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Kontakta Oss</h1>
+                <p>Vi finns här för att hjälpa dig</p>
+            </div>
+        </section>
+
+        <section class="contant-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <h2>Skicka ett meddelande</h2>
+                        <form id="contact-form">
+                            <div class="form-control">
+                                <label for="name">Namn</label>
+                                <input type="text" id="name" name="name" required />
+                            </div>
+                            <div class="form-control">
+                                <label for="email">E-post</label>
+                                <input type="email" id="email" name="email" required />
+                            </div>
+                            <div class="form-control">
+                                <label for="subject">Ämne</label>
+                                <input type="text" id="subject" name="subject" required />
+                            </div>
+
+                            <div class="form-control">
+                                <label for="message">Meddelande</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Skicka Meddelande
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Kontaktinformation -->
+                    <div class="contact-info">
+                        <h2>Kontaktinformation</h2>
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h3>Besöksadress</h3>
+                                <p>Utvecklargatan 12</p>
+                                <p>411 06 Göteborg</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <h3>Telefon</h3>
+                                <p>031-123 45 67</p>
+                                <p>Vardagar 09.00-16.00</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <h3>E-post</h3>
+                                <p>info@westcoasteducation.se</p>
+                                <p>Vi svarar normalt inom 24 timmar</p>
+                            </div>
+                        </div>
+
+                        <div class="social-media">
+                            <h3>Följ oss</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Westcoast Education</p>
+        </div>
+    </footer>
+</body>
+
+</html>

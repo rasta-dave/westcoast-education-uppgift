@@ -20,3 +20,11 @@ Kom ihåg listan:
 
 3st sidor för STEG 1
 3 end-points!
+
+---
+
+Workflow
+
+1. JSON-Servern och end-points
+2. Modell, HTTP-klienten och DOM hanteringen
+3.

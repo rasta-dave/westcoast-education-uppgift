@@ -1,0 +1,57 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "title": "JavaScript Grundkurs",
+      "courseNumber": "JS101",
+      "length": 5,
+      "description": "Lär dig grunderna i JavaScript programmering",
+      "imageUrl": "javascript.jpg",
+      "isCLassroom": true,
+      "isDistance": true,
+      "price": 9999,
+      "startDate": "2025-02-15"
+    },
+    {
+      "id": "2",
+      "title": "TypeScript för nybörjare",
+      "courseNumber": "TS101",
+      "length": 4,
+      "description": "Kom igång med TypeScript",
+      "imageUrl": "typescript.jpg",
+      "isCLassroom": true,
+      "isDistance": true,
+      "price": 8999,
+      "startDate": "2025-03-01"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1",
+      "courseId": "1",
+      "customerName": "Anna Andersson",
+      "email": "anna@westcoastedu.com",
+      "phone": "0701234567",
+      "bookingDate": "2025-01-15"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "1",
+      "courseId": "1",
+      "startDate": "2025-02-15",
+      "endDate": "2025-02-20",
+      "type": "classroom",
+      "location": "Göteborg",
+      "availableSeats": 20
+    },
+    {
+      "id": "2",
+      "courseId": "1",
+      "startDate": "2025-03-15",
+      "endDate": "2025-03-20",
+      "type": "distance",
+      "availableSeats": 30
+    }
+  ]
+}

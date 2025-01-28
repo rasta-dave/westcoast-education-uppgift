@@ -7,8 +7,8 @@
       "length": 5,
       "description": "Lär dig grunderna i JavaScript programmering",
       "imageUrl": "javascript.jpg",
-      "isCLassroom": true,
-      "isDistance": true,
+      "isClassroom": true,
+      "isDistance": false,
       "price": 9999,
       "startDate": "2025-02-15"
     },
@@ -19,7 +19,7 @@
       "length": 4,
       "description": "Kom igång med TypeScript",
       "imageUrl": "typescript.jpg",
-      "isCLassroom": true,
+      "isClassroom": false,
       "isDistance": true,
       "price": 8999,
       "startDate": "2025-03-01"

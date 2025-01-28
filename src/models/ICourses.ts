@@ -5,7 +5,7 @@ export interface ICourse {
   length: number;
   description: string;
   imageUrl: string;
-  isCLassroom: boolean;
+  isClassroom: boolean;
   isDistance: boolean;
   price: number;
   startDate: string;

@@ -1,8 +1,8 @@
 // Funktioner som Hanterar all interaktion med webbsidans DOM
-export const courseList = document.querySelector('.course-list');
+export const courseList = document.querySelector('#course-list');
 // Funktion för att lägga till ett element i kurslistan ...
 export const displayCourseList = (courseElement) => {
-    courseList === null || courseList === void 0 ? void 0 : courseList.appendChild(courseList);
+    courseList === null || courseList === void 0 ? void 0 : courseList.appendChild(courseElement);
 };
 // Funktion för att skapa ett kurskort ...
 export const createCourseElement = (course) => {

@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { get } from './utils/httpClient.js';
 import { displayCourseList, displayLoading, displayError, clearCourseList, createCourseElement, } from './utils/dom.js';
 const initializeApp = () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('initializeApp Fungerar ...');
     try {
         // Visa laddningsindikatorn ...
         displayLoading();

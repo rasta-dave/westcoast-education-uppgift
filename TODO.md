@@ -35,6 +35,12 @@ Workflow
 
    1. Modell för interface (APIn) ICourses.ts
       1. HTTP-klienten (pratar med vårt API: GET, POST, PUT, DELETE)
-         1. DOM hanteringen (som visar kurserna)
+         1. DOM hanteringen (funktioner som visar kurserna)
 
-2. Courses.ts
+Börja sätta ihop delarna
+
+1. Courses.ts
+
+2. courses-details.ts (mer detaljerad information om en specifik kurs)
+
+3.

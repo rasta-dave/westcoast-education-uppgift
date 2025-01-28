@@ -29,6 +29,8 @@ npm run server db.json /Startar servern
 
 ---
 
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > <>
+
 Workflow
 
 1. JSON-Servern och end-points (Själva datan)
@@ -43,4 +45,7 @@ Börja sätta ihop delarna
 
 2. courses-details.ts (mer detaljerad information om en specifik kurs)
 
-3.
+3. config.ts (onfigurationsinställningar)
+   services.ts (hantera API-anrop)
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > <>

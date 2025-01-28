@@ -1,23 +1,14 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 const baseUrl = 'http://localhost:3000';
 // GET
-export const get = (endPoint) => __awaiter(void 0, void 0, void 0, function* () {
+export const get = async (endPoint) => {
     try {
-        const response = yield fetch(`${baseUrl}/${endPoint}`);
+        const response = await fetch(`${baseUrl}/${endPoint}`);
         // Kontrollera att svaret är OK
         if (!response.ok) {
             throw new Error(`${response.status} ${response.statusText}`);
         }
         // Hämta data
-        const result = yield response.json();
+        const result = await response.json();
         return result;
         // Övergripande felhantering
     }
@@ -25,11 +16,11 @@ export const get = (endPoint) => __awaiter(void 0, void 0, void 0, function* () 
         console.error(error);
         throw error;
     }
-});
+};
 // POST
-export const post = (endPoint, data) => __awaiter(void 0, void 0, void 0, function* () {
+export const post = async (endPoint, data) => {
     try {
-        const response = yield fetch(`${baseUrl}/${endPoint}`, {
+        const response = await fetch(`${baseUrl}/${endPoint}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,14 +30,14 @@ export const post = (endPoint, data) => __awaiter(void 0, void 0, void 0, functi
         if (!response.ok) {
             throw new Error(`${response.status} ${response.statusText}`);
         }
-        const result = yield response.json();
+        const result = await response.json();
         return result;
     }
     catch (error) {
         console.error(error);
         throw error;
     }
-});
+};
 // PUT
 // DELETE
 // ETC

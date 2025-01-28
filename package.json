@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "server": "npx json-server",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "author": "",
   "license": "ISC",

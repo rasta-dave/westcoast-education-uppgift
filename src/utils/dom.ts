@@ -1,4 +1,5 @@
 // Funktioner som Hanterar all interaktion med webbsidans DOM
+import { ICourse } from '../models/ICourses.js';
 
 export const courseList = document.querySelector('#course-list');
 
@@ -8,7 +9,7 @@ export const displayCourseList = (courseElement: HTMLDivElement): void => {
 };
 
 // Funktion för att skapa ett kurskort ...
-export const createCourseElement = (course: any): HTMLDivElement => {
+export const createCourseElement = (course: ICourse): HTMLDivElement => {
   // Skapa ett nytt div-element
   const div = document.createElement('div');
 

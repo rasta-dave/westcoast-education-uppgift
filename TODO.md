@@ -16,6 +16,12 @@ Kom ihåg listan:
 
 5. npm run server (startar servern!)
 
+===============================================
+Kommandon:
+tsc --watch /TypeScript compiler
+npm run server db.json /Startar servern
+===============================================
+
 ---
 
 3st sidor för STEG 1
@@ -25,6 +31,8 @@ Kom ihåg listan:
 
 Workflow
 
-1. JSON-Servern och end-points
-2. Modell, HTTP-klienten och DOM hanteringen
-3.
+1. JSON-Servern och end-points (Själva datan)
+   1. Modell för interface (APIn)
+      1. HTTP-klienten (pratar med vårt API: GET, POST, PUT, DELETE)
+         1. DOM hanteringen (som visar kurserna)
+            1.

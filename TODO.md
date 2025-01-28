@@ -32,7 +32,9 @@ npm run server db.json /Startar servern
 Workflow
 
 1. JSON-Servern och end-points (Själva datan)
-   1. Modell för interface (APIn)
+
+   1. Modell för interface (APIn) ICourses.ts
       1. HTTP-klienten (pratar med vårt API: GET, POST, PUT, DELETE)
          1. DOM hanteringen (som visar kurserna)
-            1.
+
+2. Courses.ts

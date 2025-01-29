@@ -6,7 +6,10 @@
     "server": "npx json-server",
     "dev": "tsc --watch",
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage"
   },
   "author": "",
   "license": "ISC",

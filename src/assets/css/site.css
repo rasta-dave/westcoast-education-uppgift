@@ -357,6 +357,11 @@ footer p {
     margin-top: 5rem;
     margin-bottom: 4rem;
   }
+
+  .search {
+    margin: 1.5rem auto;
+    max-width: 100%;
+  }
 }
 
 /* Status meddelanden */
@@ -593,4 +598,41 @@ textarea {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+/* Search bar styles */
+.search {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0.2rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 2rem;
+  background-color: #fff;
+}
+
+.search form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.search input {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #333;
+}
+
+.search input::placeholder {
+  color: #999;
+}
+
+.search i {
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
 }

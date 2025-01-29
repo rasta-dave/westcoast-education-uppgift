@@ -20,6 +20,7 @@ Kom ihåg listan:
 Kommandon:
 tsc --watch /TypeScript compiler
 npm run server db.json /Startar servern
+npm test (Kör Vitest)
 ===============================================
 
 ---
@@ -47,5 +48,7 @@ Börja sätta ihop delarna
 
 3. config.ts (onfigurationsinställningar)
    services.ts (hantera API-anrop)
+
+4. course-services.ts (Som en bro mellan frontend och backend)
 
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > <>

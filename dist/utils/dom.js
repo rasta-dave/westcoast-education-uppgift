@@ -25,6 +25,13 @@ export const createCourseElement = (course) => {
   `;
     // Sätt innehållet i div-elementet
     div.innerHTML = courseHtml;
+    // Fix: Select the correct button and add event listener
+    const detailsButton = div.querySelector(`button[data-course-id="${course.id}"]`);
+    detailsButton?.addEventListener('click', () => {
+        console.log('Klickade på Visa mer för kurs:', course.id);
+        // Fix: Correct the path to course-details.html
+        window.location.href = `/src/pages/course-details.html?id=${course.id}`;
+    });
     return div;
 };
 // ================================

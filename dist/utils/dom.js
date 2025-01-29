@@ -58,7 +58,7 @@ export const clearCourseList = () => {
 export const displayMessage = (message, type) => {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${type}`;
-    messageDiv.textContent = message;
+    messageDiv.innerHTML = message;
     document.body.appendChild(messageDiv);
     // Ta bort meddelandet efter 3 sekunder ...
     setTimeout(() => {

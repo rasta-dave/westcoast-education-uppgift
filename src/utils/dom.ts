@@ -77,7 +77,7 @@ export const displayMessage = (
 ): void => {
   const messageDiv = document.createElement('div');
   messageDiv.className = `message ${type}`;
-  messageDiv.textContent = message;
+  messageDiv.innerHTML = message;
 
   document.body.appendChild(messageDiv);
 

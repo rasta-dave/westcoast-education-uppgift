@@ -1,7 +1,7 @@
-import { get } from './utils/httpClient.js';
+import { get, post } from './utils/httpClient.js';
 import { displayError, displayMessage } from './utils/dom.js';
 const courseDetailsContainer = document.querySelector('#course-details');
-const bookingForm = document.querySelector('#booking-form');
+const bookingFormContainer = document.querySelector('#booking-form');
 const displayCourseDetails = (course) => {
     const detailsHtml = `
     <div class="course-details">
@@ -27,7 +27,7 @@ const displayCourseDetails = (course) => {
     // Lägger till eventlyssnare för bokningsknappen
     const bookingButton = document.querySelector('#show-booking');
     bookingButton?.addEventListener('click', () => {
-        bookingForm?.classList.remove('hidden');
+        bookingFormContainer?.classList.remove('hidden');
     });
 };
 const initializeDetails = async () => {
@@ -46,23 +46,35 @@ const initializeDetails = async () => {
         displayError('Kunde inte ladda kursdetaljer');
     }
 };
-// Hantera bokningsformuläret ...
-const handleBooking = async (event) => {
+const handleBooking = async (event, courseId) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
+    const bookingData = {
+        courseId,
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+    };
     try {
-        // Senare implementera bokning via API:et ...
+        await post('bookings', bookingData);
         displayMessage('Bokning mottagen! Vi återkommer med bekräftelse.', 'success');
         form.reset();
-        bookingForm?.classList.add('hidden');
+        // Använder bookingFormContainer här istället
+        if (bookingFormContainer) {
+            bookingFormContainer.classList.add('hidden');
+        }
     }
     catch (error) {
-        displayError('Kunde inte genomföra bokningen. Försök igen senare.');
+        console.error('Fel vid bokning:', error);
+        displayMessage('Ett fel uppstod vid bokningen. Försök igen senare.', 'error');
     }
 };
 // Event listeners ...
 document.addEventListener('DOMContentLoaded', initializeDetails);
-document
-    .querySelector('#book-course')
-    ?.addEventListener('submit', handleBooking);
+const bookingForm = document.getElementById('book-course');
+const urlParams = new URLSearchParams(window.location.search);
+const courseId = urlParams.get('id');
+if (bookingForm && courseId) {
+    bookingForm.addEventListener('submit', (e) => handleBooking(e, courseId));
+}

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { CourseService } from '../../src/services/courseService';
-import { ICourse } from '../../src/models/ICourses';
+import { CourseService } from '../../src/services/course-services.js';
+import { ICourse } from '../../src/models/ICourses.js';
 
 describe('CourseService', () => {
   let courseService: CourseService;

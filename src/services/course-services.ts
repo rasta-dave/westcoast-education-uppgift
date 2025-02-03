@@ -1,5 +1,5 @@
 import { ICourse } from '../models/ICourses.js';
-import { get } from '../utils/httpClient.js';
+import { get, post } from '../utils/httpClient.js';
 
 export class CourseService {
   private readonly baseUrl = 'courses';
@@ -23,6 +23,16 @@ export class CourseService {
       return course;
     } catch (error) {
       console.log(`Error fetching course with id ${id}:`, error);
+      throw error;
+    }
+  }
+
+  async createCourse(courseData: Omit<ICourse, 'id'>): Promise<ICourse> {
+    try {
+      const newCourse = await post(this.baseUrl, courseData);
+      return newCourse;
+    } catch (error) {
+      console.error('Error creating course:', error);
       throw error;
     }
   }

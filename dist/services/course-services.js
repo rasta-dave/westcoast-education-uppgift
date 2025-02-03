@@ -1,4 +1,4 @@
-import { get } from '../utils/httpClient.js';
+import { get, post } from '../utils/httpClient.js';
 export class CourseService {
     constructor() {
         this.baseUrl = 'courses';
@@ -23,6 +23,16 @@ export class CourseService {
         }
         catch (error) {
             console.log(`Error fetching course with id ${id}:`, error);
+            throw error;
+        }
+    }
+    async createCourse(courseData) {
+        try {
+            const newCourse = await post(this.baseUrl, courseData);
+            return newCourse;
+        }
+        catch (error) {
+            console.error('Error creating course:', error);
             throw error;
         }
     }

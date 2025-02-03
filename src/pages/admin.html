@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/site.css" />
+    <script
+      src="https://kit.fontawesome.com/55174c58a9.js"
+      crossorigin="anonymous"></script>
+    <script src="../../dist/admin.js" type="module"></script>
+    <title>Westcoast Education - Admin</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container">
+          <ul class="menu">
+            <li class="logo">
+              <a class="page-title" href="../index.html">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Westcoast Education - Admin
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="../index.html">Tillbaka till hemsidan</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </body>
+</html>
+
+<main>
+    <div class="container">
+        <section class="admin-section">
+            <h1>Kursadministration</h1>
+
+            <!-- Formuläret för att lägga till / redigera kurser-->
+            <div class="course-form">
+                <h2>Lägg till ny kurs</h2>
+                <form id="course-form">
+                  <div class="form-control">
+                    <label for="title">Kurstitel</label>
+                    <input type="text" id="title" name="title" required />
+                  </div>
+                  <div class="form-control">
+                    <label for="courseNumber">Kursnummer</label>
+                    <input type="text" id="courseNumber" name="courseNumber" required />
+                  </div>
+                  <div class="form-control">
+                    <label for="length">Längd (dagar)</label>
+                    <input type="number" id="length" name="length" required />
+                  </div>
+                  <div class="form-control">
+                    <label for="description">Beskrivning</label>
+                    <textarea id="description" name="description" required></textarea>
+                  </div>
+                  <div class="form-control">
+                    <label for="price">Pris (kr)</label>
+                    <input type="number" id="price" name="price" required />
+                  </div>
+                  <div class="form-control">
+                    <label for="startDate">Startdatum</label>
+                    <input type="date" id="startDate" name="startDate" required />
+                  </div>
+                  <div class="form-control">
+                    <label>Kurstyp</label>
+                    <div>
+                      <input type="checkbox" id="isClassroom" name="isClassroom">
+                      <label for="isClassroom">Klassrum</label>
+                      <input type="checkbox" id="isDistance" name="isDistance">
+                      <label for="isDistance">Distans</label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Spara kurs</button>
+                </form>
+              </div>
+
+             <!-- Lista över befintliga kurser-->
+              <div class="course-list">
+                <h2>Befintliga kurser</h2>
+                <div id="admin-course-list">
+                    <!-- Kurser laddas in här dynamiskt ...-->
+                </div>
+              </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+      <p>&copy; 2025 Westcoast Education</p>
+    </div>
+  </footer>
+</body>
+</html>

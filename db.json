@@ -23,6 +23,18 @@
       "isDistance": true,
       "price": 8999,
       "startDate": "2025-03-01"
+    },
+    {
+      "id": "11d4",
+      "title": "Ny kurs",
+      "courseNumber": "3242345",
+      "length": 325324,
+      "description": "Test kurs",
+      "price": 4235,
+      "startDate": "2025-02-10",
+      "imageUrl": "default.jpg",
+      "isClassroom": false,
+      "isDistance": true
     }
   ],
   "bookings": [

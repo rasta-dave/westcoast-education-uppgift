@@ -1,8 +1,8 @@
-const baseUrl = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3000';
 // GET
 export const get = async (endPoint) => {
     try {
-        const response = await fetch(`${baseUrl}/${endPoint}`);
+        const response = await fetch(`${BASE_URL}/${endPoint}`);
         // Kontrollera att svaret är OK
         if (!response.ok) {
             throw new Error(`${response.status} ${response.statusText}`);
@@ -19,24 +19,17 @@ export const get = async (endPoint) => {
 };
 // POST
 export const post = async (endPoint, data) => {
-    try {
-        const response = await fetch(`${baseUrl}/${endPoint}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data), // Konverterar JS-objektet till JSON
-        });
-        if (!response.ok) {
-            throw new Error(`${response.status} ${response.statusText}`);
-        }
-        const result = await response.json();
-        return result;
+    const response = await fetch(`${BASE_URL}/${endPoint}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
     }
-    catch (error) {
-        console.error(error);
-        throw error;
-    }
+    return await response.json();
 };
 // PUT
 // DELETE

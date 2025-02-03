@@ -29,11 +29,26 @@ export class CourseService {
     async createCourse(courseData) {
         try {
             const newCourse = await post(this.baseUrl, courseData);
+            // Create default schedule for the new course
+            const defaultSchedule = {
+                courseId: newCourse.id,
+                startDate: courseData.startDate,
+                endDate: this.calculateEndDate(courseData.startDate, courseData.length),
+                type: courseData.isDistance ? 'distance' : 'classroom',
+                availableSeats: 25,
+                location: courseData.isClassroom ? 'Göteborg' : undefined,
+            };
+            await post('schedules', defaultSchedule);
             return newCourse;
         }
         catch (error) {
             console.error('Error creating course:', error);
             throw error;
         }
+    }
+    calculateEndDate(startDate, lengthInDays) {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() + lengthInDays);
+        return date.toISOString().split('T')[0];
     }
 }

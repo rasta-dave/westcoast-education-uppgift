@@ -35,6 +35,18 @@
       "imageUrl": "default.jpg",
       "isClassroom": false,
       "isDistance": true
+    },
+    {
+      "id": "8c7b",
+      "title": "Machine LEarning",
+      "courseNumber": "ML4253",
+      "length": 45,
+      "description": "Världsklass Machine Learning kurs",
+      "price": 13000,
+      "startDate": "2025-07-22",
+      "imageUrl": "default.jpg",
+      "isClassroom": true,
+      "isDistance": false
     }
   ],
   "bookings": [
@@ -150,6 +162,22 @@
       "name": "David",
       "email": "test@gmai.com",
       "phone": "0731234546"
+    },
+    {
+      "id": "c4bb",
+      "courseId": "2",
+      "scheduleId": "3",
+      "name": "Test",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
+    },
+    {
+      "id": "c806",
+      "courseId": "8c7b",
+      "scheduleId": "fa00",
+      "name": "Billy",
+      "email": "test@gmai.com",
+      "phone": "073243221"
     }
   ],
   "schedules": [
@@ -176,7 +204,7 @@
       "startDate": "2025-03-01",
       "endDate": "2025-03-05",
       "type": "distance",
-      "availableSeats": 25
+      "availableSeats": 24
     },
     {
       "id": "4",
@@ -185,6 +213,15 @@
       "endDate": "2025-04-05",
       "type": "distance",
       "availableSeats": 25
+    },
+    {
+      "id": "fa00",
+      "courseId": "8c7b",
+      "startDate": "2025-07-22",
+      "endDate": "2025-09-05",
+      "type": "classroom",
+      "availableSeats": 24,
+      "location": "Göteborg"
     }
   ]
 }

@@ -96,22 +96,30 @@ const handleBooking = async (event) => {
         displayError('Felaktig kurs - eller schemaläggningsinformation');
         return;
     }
-    const bookingData = {
-        courseId,
-        scheduleId,
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-    };
     try {
+        const bookingData = {
+            courseId,
+            scheduleId,
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+        };
         await bookingService.createBooking(bookingData);
         displayMessage('Bokning mottagen! Vi återkommer med bekräftelse.', 'success');
         form.reset();
         bookingFormContainer?.classList.add('hidden');
+        // Uppdatera sidan för att visa nya antalet tillgängliga platser
+        const course = await courseService.getCourseById(courseId);
+        await displayCourseDetails(course);
     }
     catch (error) {
         console.error('Error creating booking:', error);
-        displayMessage('Ett fel uppstod vid bokningen. Försök igen senare.', 'error');
+        if (error instanceof Error) {
+            displayMessage(error.message, 'error');
+        }
+        else {
+            displayMessage('Ett fel uppstod vid bokningen. Försök igen senare.', 'error');
+        }
     }
 };
 const initializeDetails = async () => {

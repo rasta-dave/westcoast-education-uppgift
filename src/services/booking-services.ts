@@ -1,13 +1,36 @@
 import { get, post } from '../utils/httpClient.js';
 import { IBooking } from '../models/IBooking.js';
+import { ScheduleService } from './schedule-services.js';
 
 export class BookingService {
   private readonly baseUrl = 'bookings';
+  private scheduleService: ScheduleService;
+
+  constructor() {
+    this.scheduleService = new ScheduleService();
+  }
 
   // Skapar en bokning och skickar den till servern ...
-  async createBooking(bookingData: IBooking): Promise<IBooking> {
+  async createBooking(
+    bookingData: IBooking & { scheduleId: string }
+  ): Promise<IBooking> {
     try {
+      // Hämta aktuellt schema för att kolla tillgängliga platser
+      const schedule = await get(`schedules/${bookingData.scheduleId}`);
+
+      if (schedule.availableSeats <= 0) {
+        throw new Error('No available seats for this course schedule');
+      }
+
+      // Skapa bokningen
       const booking = await post(this.baseUrl, bookingData);
+
+      // Uppdatera antalet tillgängliga platser
+      await this.scheduleService.updateAvailableSeats(
+        bookingData.scheduleId,
+        schedule.availableSeats - 1
+      );
+
       return booking;
     } catch (error) {
       console.error('Error creating booking:', error);

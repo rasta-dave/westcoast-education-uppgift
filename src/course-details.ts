@@ -130,28 +130,37 @@ const handleBooking = async (event: Event) => {
     return;
   }
 
-  const bookingData: IBookingFormData = {
-    courseId,
-    scheduleId,
-    name: formData.get('name') as string,
-    email: formData.get('email') as string,
-    phone: formData.get('phone') as string,
-  };
-
   try {
+    const bookingData: IBookingFormData = {
+      courseId,
+      scheduleId,
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+    };
+
     await bookingService.createBooking(bookingData);
+
     displayMessage(
       'Bokning mottagen! Vi återkommer med bekräftelse.',
       'success'
     );
     form.reset();
     bookingFormContainer?.classList.add('hidden');
+
+    // Uppdatera sidan för att visa nya antalet tillgängliga platser
+    const course = await courseService.getCourseById(courseId);
+    await displayCourseDetails(course);
   } catch (error) {
     console.error('Error creating booking:', error);
-    displayMessage(
-      'Ett fel uppstod vid bokningen. Försök igen senare.',
-      'error'
-    );
+    if (error instanceof Error) {
+      displayMessage(error.message, 'error');
+    } else {
+      displayMessage(
+        'Ett fel uppstod vid bokningen. Försök igen senare.',
+        'error'
+      );
+    }
   }
 };
 

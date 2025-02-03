@@ -386,6 +386,48 @@ footer p {
   color: white;
 }
 
+.bookings-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-select {
+  margin-bottom: 1rem;
+}
+
+.course-select select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.bookings-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.bookings-list th,
+.bookings-list td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.bookings-list th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.bookings-list tr:hover {
+  background-color: #f8f9fa;
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);

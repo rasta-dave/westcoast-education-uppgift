@@ -1,12 +1,22 @@
 import { get, post } from '../utils/httpClient.js';
+import { ScheduleService } from './schedule-services.js';
 export class BookingService {
     constructor() {
         this.baseUrl = 'bookings';
+        this.scheduleService = new ScheduleService();
     }
     // Skapar en bokning och skickar den till servern ...
     async createBooking(bookingData) {
         try {
+            // Hämta aktuellt schema för att kolla tillgängliga platser
+            const schedule = await get(`schedules/${bookingData.scheduleId}`);
+            if (schedule.availableSeats <= 0) {
+                throw new Error('No available seats for this course schedule');
+            }
+            // Skapa bokningen
             const booking = await post(this.baseUrl, bookingData);
+            // Uppdatera antalet tillgängliga platser
+            await this.scheduleService.updateAvailableSeats(bookingData.scheduleId, schedule.availableSeats - 1);
             return booking;
         }
         catch (error) {

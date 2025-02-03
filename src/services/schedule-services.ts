@@ -1,5 +1,5 @@
 import { ISchedule } from '../models/ISchedule.js';
-import { get } from '../utils/httpClient.js';
+import { get, patch } from '../utils/httpClient.js';
 
 export class ScheduleService {
   private readonly baseUrl = 'schedules';
@@ -24,6 +24,20 @@ export class ScheduleService {
         error
       );
       throw new Error('Failed to check schedule availability');
+    }
+  }
+
+  async updateAvailableSeats(
+    scheduleId: string,
+    newSeatsCount: number
+  ): Promise<void> {
+    try {
+      await patch(`${this.baseUrl}/${scheduleId}`, {
+        availableSeats: newSeatsCount,
+      });
+    } catch (error) {
+      console.error('Error updating available seats:', error);
+      throw new Error('Failed to update available seats');
     }
   }
 }

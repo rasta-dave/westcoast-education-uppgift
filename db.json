@@ -110,6 +110,46 @@
       "name": "David",
       "email": "sdad@gmail.com",
       "phone": "0731234546"
+    },
+    {
+      "id": "ee05",
+      "courseId": "1",
+      "scheduleId": "1",
+      "name": "David",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
+    },
+    {
+      "id": "2d3d",
+      "courseId": "1",
+      "scheduleId": "1",
+      "name": "David",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
+    },
+    {
+      "id": "f411",
+      "courseId": "1",
+      "scheduleId": "2",
+      "name": "David",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
+    },
+    {
+      "id": "3bea",
+      "courseId": "1",
+      "scheduleId": "1",
+      "name": "David",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
+    },
+    {
+      "id": "0e56",
+      "courseId": "1",
+      "scheduleId": "1",
+      "name": "David",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
     }
   ],
   "schedules": [
@@ -120,7 +160,7 @@
       "endDate": "2025-02-20",
       "type": "classroom",
       "location": "Göteborg",
-      "availableSeats": 20
+      "availableSeats": 18
     },
     {
       "id": "2",
@@ -129,6 +169,22 @@
       "endDate": "2025-03-20",
       "type": "distance",
       "availableSeats": 30
+    },
+    {
+      "id": "3",
+      "courseId": "2",
+      "startDate": "2025-03-01",
+      "endDate": "2025-03-05",
+      "type": "distance",
+      "availableSeats": 25
+    },
+    {
+      "id": "4",
+      "courseId": "2",
+      "startDate": "2025-04-01",
+      "endDate": "2025-04-05",
+      "type": "distance",
+      "availableSeats": 25
     }
   ]
 }

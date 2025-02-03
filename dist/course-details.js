@@ -1,9 +1,20 @@
-import { get, post } from './utils/httpClient.js';
 import { displayError, displayMessage } from './utils/dom.js';
+// Imlmentererar mina 3 services ...
+// Service Layer Pattern ...
+import { CourseService } from './services/course-services.js';
+import { BookingService } from './services/booking-services.js';
+import { ScheduleService } from './services/schedule-services.js';
 const courseDetailsContainer = document.querySelector('#course-details');
 const bookingFormContainer = document.querySelector('#booking-form');
-const displayCourseDetails = (course) => {
-    const detailsHtml = `
+const bookingForm = document.getElementById('book-course');
+const courseService = new CourseService();
+const bookingService = new BookingService();
+const scheduleService = new ScheduleService();
+const displayCourseDetails = async (course) => {
+    try {
+        // Fetcha schema för denna kurs ...
+        const schedules = await scheduleService.getSchedulesByCourseId(course.id);
+        const detailsHtml = `
     <div class="course-details">
         <h1>${course.title}</h1>
         <div class="course-info">
@@ -12,23 +23,96 @@ const displayCourseDetails = (course) => {
             <p class="course-price">Pris: ${course.price} kr</p>
             <div class="course-type">
                 ${course.isClassroom
-        ? '<span class="badge">Klassrum</span>'
-        : ''}
+            ? '<span class="badge">Klassrum</span>'
+            : ''}
                 ${course.isDistance ? '<span class="badge">Distans</span>' : ''}
             </div>
             <div class="course-description">
                 <h2>Kursbeskrivning</h2>
                 <p>${course.description}</p>
             </div>
-            <button id="show-booking" class="btn btn-primary">Boka kurs</button>
-        </div>
-    `;
-    courseDetailsContainer.innerHTML = detailsHtml;
-    // Lägger till eventlyssnare för bokningsknappen
-    const bookingButton = document.querySelector('#show-booking');
-    bookingButton?.addEventListener('click', () => {
-        bookingFormContainer?.classList.remove('hidden');
-    });
+
+            <div class="course-schedule">
+                <h2>Tillgängliga kurstillfällen</h2>
+                <div class="schedule-list">
+                  ${schedules
+            .map((schedule) => `
+                    <div class="schedule-item">
+                      <p>Datum: ${new Date(schedule.startDate).toLocaleDateString()} - ${new Date(schedule.endDate).toLocaleDateString()}</p>
+                    <p>Typ: ${schedule.type === 'classroom' ? 'Klassrum' : 'Distans'}</p>
+                  ${schedule.location
+            ? `<p>Plats: ${schedule.location}</p>`
+            : ''}
+                  <p>Lediga platser: ${schedule.availableSeats}</p>
+            <button class="btn btn-primary book-btn" 
+              data-schedule-id="${schedule.id}"
+              ${schedule.availableSeats === 0 ? 'disabled' : ''}>
+                  ${schedule.availableSeats === 0 ? 'Fullbokad' : 'Boka'}
+            </button>
+          </div>`)
+            .join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        if (courseDetailsContainer) {
+            courseDetailsContainer.innerHTML = detailsHtml;
+        }
+        // ----------------------------------------------
+        // Adding event listeners to booking buttons ...
+        const bookButtons = document.querySelectorAll('.book-btn');
+        bookButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const scheduleId = button.dataset.scheduleId;
+                if (scheduleId) {
+                    showBookingForm(course.id, scheduleId);
+                }
+            });
+        });
+    }
+    catch (error) {
+        console.error('Error displaying course details:', error);
+        displayError('Kunde inte ladda kursdetaljer');
+    }
+};
+const showBookingForm = (courseId, scheduleId) => {
+    if (!bookingFormContainer)
+        return;
+    bookingFormContainer.classList.remove('hidden');
+    const form = document.getElementById('book-course');
+    if (form) {
+        form.dataset.courseId = courseId;
+        form.dataset.scheduleId = scheduleId;
+    }
+};
+const handleBooking = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const courseId = form.dataset.courseId;
+    const scheduleId = form.dataset.scheduleId;
+    if (!courseId || !scheduleId) {
+        displayError('Felaktig kurs - eller schemaläggningsinformation');
+        return;
+    }
+    const bookingData = {
+        courseId,
+        scheduleId,
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+    };
+    try {
+        await bookingService.createBooking(bookingData);
+        displayMessage('Bokning mottagen! Vi återkommer med bekräftelse.', 'success');
+        form.reset();
+        bookingFormContainer?.classList.add('hidden');
+    }
+    catch (error) {
+        console.error('Error creating booking:', error);
+        displayMessage('Ett fel uppstod vid bokningen. Försök igen senare.', 'error');
+    }
 };
 const initializeDetails = async () => {
     try {
@@ -38,43 +122,16 @@ const initializeDetails = async () => {
         if (!courseId) {
             throw new Error('Inget kurs-ID specificerat');
         }
-        // Hämtar kurs-detaljer från API:et ...
-        const course = (await get(`courses/${courseId}`));
-        displayCourseDetails(course);
+        const course = await courseService.getCourseById(courseId);
+        await displayCourseDetails(course);
     }
     catch (error) {
+        console.error('Error initializing course details:', error);
         displayError('Kunde inte ladda kursdetaljer');
-    }
-};
-const handleBooking = async (event, courseId) => {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    const bookingData = {
-        courseId,
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-    };
-    try {
-        await post('bookings', bookingData);
-        displayMessage('Bokning mottagen! Vi återkommer med bekräftelse.', 'success');
-        form.reset();
-        // Använder bookingFormContainer här istället
-        if (bookingFormContainer) {
-            bookingFormContainer.classList.add('hidden');
-        }
-    }
-    catch (error) {
-        console.error('Fel vid bokning:', error);
-        displayMessage('Ett fel uppstod vid bokningen. Försök igen senare.', 'error');
     }
 };
 // Event listeners ...
 document.addEventListener('DOMContentLoaded', initializeDetails);
-const bookingForm = document.getElementById('book-course');
-const urlParams = new URLSearchParams(window.location.search);
-const courseId = urlParams.get('id');
-if (bookingForm && courseId) {
-    bookingForm.addEventListener('submit', (e) => handleBooking(e, courseId));
+if (bookingForm) {
+    bookingForm.addEventListener('submit', handleBooking);
 }

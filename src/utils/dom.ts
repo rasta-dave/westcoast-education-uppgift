@@ -17,11 +17,11 @@ export const createCourseElement = (course: ICourse): HTMLDivElement => {
   // Lägger till bilder i kurskortet ...
   const getImagePath = (course: ICourse): string => {
     if (course.title.toLowerCase().includes('javascript')) {
-      return '../assets/images/javascript.jpg';
+      return '/src/assets/images/javascript.jpg';
     } else if (course.title.toLowerCase().includes('typescript')) {
-      return '../assets/images/typescript.jpg';
+      return '/src/assets/images/typescript.jpg';
     }
-    return '../assets/images/coding.jpg';
+    return '/src/assets/images/coding.jpg';
   };
 
   // Skapar HTML-innehållet för kurskortet ...

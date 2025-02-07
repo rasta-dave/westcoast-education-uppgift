@@ -6,7 +6,7 @@
       "courseNumber": "JS101",
       "length": 5,
       "description": "Lär dig grunderna i JavaScript programmering",
-      "imageUrl": "src/assets/images/javascript.jpg",
+      "imageUrl": "/src/assets/images/javascript.jpg",
       "isClassroom": true,
       "isDistance": false,
       "price": 9999,
@@ -18,7 +18,7 @@
       "courseNumber": "TS101",
       "length": 4,
       "description": "Kom igång med TypeScript",
-      "imageUrl": "src/assets/images/typescript.jpg",
+      "imageUrl": "/src/assets/images/typescript.jpg",
       "isClassroom": false,
       "isDistance": true,
       "price": 8999,
@@ -32,7 +32,7 @@
       "description": "Test kurs",
       "price": 4235,
       "startDate": "2025-02-10",
-      "imageUrl": "default.jpg",
+      "imageUrl": "/src/assets/images/coding.jpg",
       "isClassroom": false,
       "isDistance": true
     },
@@ -44,6 +44,18 @@
       "description": "Världsklass Machine Learning kurs",
       "price": 13000,
       "startDate": "2025-07-22",
+      "imageUrl": "/src/assets/images/coding.jpg",
+      "isClassroom": true,
+      "isDistance": false
+    },
+    {
+      "id": "b286",
+      "title": "Avancerad C Kurs",
+      "courseNumber": "C62311",
+      "length": 120,
+      "description": "Den bästa C kursen på marknaden",
+      "price": 8320,
+      "startDate": "2025-09-30",
       "imageUrl": "default.jpg",
       "isClassroom": true,
       "isDistance": false
@@ -178,6 +190,14 @@
       "name": "Billy",
       "email": "test@gmai.com",
       "phone": "073243221"
+    },
+    {
+      "id": "ec24",
+      "courseId": "b286",
+      "scheduleId": "bde9",
+      "name": "Billy",
+      "email": "test@gmai.com",
+      "phone": "0731234546"
     }
   ],
   "schedules": [
@@ -219,6 +239,15 @@
       "courseId": "8c7b",
       "startDate": "2025-07-22",
       "endDate": "2025-09-05",
+      "type": "classroom",
+      "availableSeats": 24,
+      "location": "Göteborg"
+    },
+    {
+      "id": "bde9",
+      "courseId": "b286",
+      "startDate": "2025-09-30",
+      "endDate": "2026-01-28",
       "type": "classroom",
       "availableSeats": 24,
       "location": "Göteborg"

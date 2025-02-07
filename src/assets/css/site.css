@@ -669,31 +669,33 @@ textarea {
   border: 2px solid #ddd;
   border-radius: 2rem;
   background-color: #fff;
-}
-
-.search form {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .search input {
   width: 100%;
-  font-size: 1.1rem;
   padding: 0.8rem;
-  background: transparent;
   border: none;
   outline: none;
-  color: #333;
-}
-
-.search input::placeholder {
-  color: #999;
+  font-size: 1rem;
+  background: transparent;
 }
 
 .search i {
   color: #666;
-  font-size: 1.2rem;
   cursor: pointer;
+}
+
+/* Style for active filter button */
+.filter-btn.active {
+  background-color: #555;
+  color: white;
+}
+
+.course-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
 }

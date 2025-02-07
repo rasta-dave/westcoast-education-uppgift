@@ -3,7 +3,7 @@ import { get, post } from '../utils/httpClient.js';
 
 export class CourseService {
   private readonly baseUrl = 'courses';
-  private readonly defaultImageUrl = 'src/assets/images/coding.jpg';
+  private readonly defaultImageUrl = '/src/assets/images/coding.jpg';
 
   async getAllCourses(): Promise<ICourse[]> {
     try {

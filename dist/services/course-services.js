@@ -2,7 +2,7 @@ import { get, post } from '../utils/httpClient.js';
 export class CourseService {
     constructor() {
         this.baseUrl = 'courses';
-        this.defaultImageUrl = 'src/assets/images/coding.jpg';
+        this.defaultImageUrl = '/src/assets/images/coding.jpg';
     }
     async getAllCourses() {
         try {

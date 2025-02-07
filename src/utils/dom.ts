@@ -12,12 +12,25 @@ export const displayCourseList = (courseElement: HTMLDivElement): void => {
 export const createCourseElement = (course: ICourse): HTMLDivElement => {
   // Skapa ett nytt div-element
   const div = document.createElement('div');
-
-  // Lägga till CSS-klassen 'course-card
   div.className = 'course-card';
 
+  // Lägger till bilder i kurskortet ...
+  const getImagePath = (course: ICourse): string => {
+    if (course.title.toLowerCase().includes('javascript')) {
+      return '../assets/images/javascript.jpg';
+    } else if (course.title.toLowerCase().includes('typescript')) {
+      return '../assets/images/typescript.jpg';
+    }
+    return '../assets/images/coding.jpg';
+  };
+
   // Skapar HTML-innehållet för kurskortet ...
+  /*html*/
   const courseHtml = `
+
+  <div class="course-image">
+    <img src="${getImagePath(course)}" alt="${course.title}" /> 
+  </div>
   <div class="course-content">
     <h3>${course.title}</h3>
     <p>Kursnummer: ${course.courseNumber}</p>

@@ -2,6 +2,7 @@ import { get, post } from '../utils/httpClient.js';
 export class CourseService {
     constructor() {
         this.baseUrl = 'courses';
+        this.defaultImageUrl = 'src/assets/images/coding.jpg';
     }
     async getAllCourses() {
         try {
@@ -28,7 +29,10 @@ export class CourseService {
     }
     async createCourse(courseData) {
         try {
-            const newCourse = await post(this.baseUrl, courseData);
+            const newCourse = await post(this.baseUrl, {
+                ...courseData,
+                imageUrl: courseData.imageUrl || this.defaultImageUrl,
+            });
             // Create default schedule for the new course
             const defaultSchedule = {
                 courseId: newCourse.id,

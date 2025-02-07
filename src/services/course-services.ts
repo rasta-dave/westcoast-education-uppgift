@@ -3,6 +3,7 @@ import { get, post } from '../utils/httpClient.js';
 
 export class CourseService {
   private readonly baseUrl = 'courses';
+  private readonly defaultImageUrl = 'src/assets/images/coding.jpg';
 
   async getAllCourses(): Promise<ICourse[]> {
     try {
@@ -29,7 +30,10 @@ export class CourseService {
 
   async createCourse(courseData: Omit<ICourse, 'id'>): Promise<ICourse> {
     try {
-      const newCourse = await post(this.baseUrl, courseData);
+      const newCourse = await post(this.baseUrl, {
+        ...courseData,
+        imageUrl: courseData.imageUrl || this.defaultImageUrl,
+      });
 
       // Create default schedule for the new course
       const defaultSchedule = {

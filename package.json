@@ -4,12 +4,13 @@
   "main": "index.js",
   "scripts": {
     "server": "npx json-server",
-    "dev": "tsc --watch",
-    "build": "tsc",
+    "dev": "vite",
+    "build": "tsc && vite build",
     "watch": "tsc --watch",
     "test": "vitest",
     "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "start": "concurrently \"json-server --watch db.json\" \"vite\""
   },
   "author": "",
   "license": "ISC",

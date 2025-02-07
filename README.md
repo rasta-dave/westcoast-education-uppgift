@@ -77,10 +77,10 @@ Start the JSON server:
 npm run server db.json
 ```
 
-Start the development server:
+Start the Typescript compiler:
 
 ```bash
-npm run dev
+tsc --watch
 ```
 
 ### Testing

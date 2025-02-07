@@ -100,3 +100,9 @@ Build for production:
 ```bash
 npm run build
 ```
+
+ACCESS THE MAIN PAGE:
+http://127.0.0.1:5500/src/pages/kurser.html
+
+ACCESS THE ADMIN PANEL:
+http://127.0.0.1:5500/src/pages/admin.html

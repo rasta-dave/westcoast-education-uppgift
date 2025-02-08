@@ -2,7 +2,7 @@
 
 My submission for the Westcoast Education project in the Javascript course at Medieinstitutet.
 
-A modern web application for managing and displaying educational courses. Built with TypeScript and featuring a responsive design for both desktop and mobile users.
+A web application for managing and displaying educational courses. Built with TypeScript and featuring a responsive design for both desktop and mobile users.
 
 ## Features
 
